@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 - 온라인 도서 클럽</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styleproject.css" rel="stylesheet">
+    <style>
+        .review-section {
+            padding: 50px 0;
+        }
+        .review-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .review {
+            flex: 1 1 calc(33.333% - 20px);
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .review:nth-child(4), .review:nth-child(5) {
+            flex: 1 1 calc(50% - 20px);
+        }
+        .review:nth-child(6), .review:nth-child(7) {
+            flex: 1 1 calc(50% - 20px);
+        }
+        .review-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .review-body {
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .review-rating {
+            font-size: 1rem;
+            color: #ffc107;
+            margin-top: 10px;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">온라인 도서 클럽</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main project.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list2 project.html">도서 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookclub4.html">북클럽</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review9.html">리뷰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map5.html">지도</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join6.html">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login7.html">로그인</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container review-section">
+            <h1 class="text-center">리뷰</h1>
+            <div class="text-center mb-4">
+                <button class="btn btn-primary" onclick="sortReviewsByRating(true)">평점 높은 순</button>
+                <button class="btn btn-secondary" onclick="sortReviewsByRating(false)">평점 낮은 순</button>
+            </div>
+            <div class="review-list">
+                <div class="review">
+                    <p class="review-title">『어린 왕자』 - 앙투안 드 생텍쥐페리</p>
+                    <p class="review-body">이 책은 어린아이와 같은 순수한 시선으로 세상을 바라보게 합니다. 어른이 되면서 잊어버린 소중한 것들을 다시금 생각하게 해줍니다.</p>
+                    <p class="review-rating">평점: ★★★★★</p>
+                </div>
+                <div class="review">
+                    <p class="review-title">『해리 포터와 마법사의 돌』 - J.K. 롤링</p>
+                    <p class="review-body">해리 포터 시리즈의 첫 번째 책으로, 마법의 세계로의 여정을 시작하게 됩니다. 흥미진진한 이야기와 개성 넘치는 캐릭터들로 가득합니다.</p>
+                    <p class="review-rating">평점: ★★★★☆</p>
+                </div>
+                <div class="review">
+                    <p class="review-title">『1984』 - 조지 오웰</p>
+                    <p class="review-body">디스토피아 소설의 대표작으로, 전체주의 사회의 공포를 생생하게 그려냅니다. 현재의 사회를 돌아보게 만드는 강렬한 메시지를 담고 있습니다.</p>
+                    <p class="review-rating">평점: ★★★★★</p>
+                </div>
+                <div class="review">
+                    <p class="review-title">『호밀밭의 파수꾼』 - J.D. 샐린저</p>
+                    <p class="review-body">청소년기의 불안과 혼란을 사실적으로 묘사한 작품입니다. 주인공 홀든의 솔직한 심정을 통해 성장과 정체성에 대한 고민을 느낄 수 있습니다.</p>
+                    <p class="review-rating">평점: ★★★☆☆</p>
+                </div>
+                <div class="review">
+                    <p class="review-title">『무소유』 - 법정 스님</p>
+                    <p class="review-body">소유의 집착에서 벗어나 진정한 자유를 찾는 법을 이야기합니다. 삶의 본질에 대해 깊이 생각하게 만드는 명상적인 글입니다.</p>
+                    <p class="review-rating">평점: ★★★★☆</p>
+                </div>
+                <div class="review">
+                    <p class="review-title">『데미안』 - 헤르만 헤세</p>
+                    <p class="review-body">이 책은 기대에 미치지 못했습니다. 이야기 전개가 너무 느리고, 주제 전달이 모호했습니다.</p>
+                    <p class="review-rating">평점: ★★☆☆☆</p>
+                </div>
+                <div class="review">
+                    <p class="review-title">『천재들의 도시 파리』 - 에릭 와이너</p>
+                    <p class="review-body">파리라는 도시에 대한 기대가 컸는데, 작가의 설명이 지루하고 흥미를 끌지 못했습니다. 기대에 미치지 못하는 내용이었습니다.</p>
+                    <p class="review-rating">평점: ★★★☆☆</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>연락처: chae_y@sookmyung.ac.kr</p>
+            <p>숙명여자대학교 웹시스템설계</p>
+            <p>저작권 정보 &copy; 2024 온라인 도서 클럽</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function sortReviewsByRating(highToLow = true) {
+            const reviews = document.querySelectorAll('.review');
+            const reviewsArray = Array.from(reviews);
+
+            reviewsArray.sort((a, b) => {
+                const ratingA = a.querySelector('.review-rating').textContent.split('★').length - 1;
+                const ratingB = b.querySelector('.review-rating').textContent.split('★').length - 1;
+                return highToLow ? ratingB - ratingA : ratingA - ratingB;
+            });
+
+            const container = document.querySelector('.review-list');
+            container.innerHTML = '';
+            reviewsArray.forEach(review => container.appendChild(review));
+        }
+    </script>
+</body>
+</html>

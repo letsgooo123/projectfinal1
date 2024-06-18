@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 온라인 도서 클럽</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styleproject.css" rel="stylesheet">
+    <style>
+        .admin-section {
+            padding: 50px 0;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">온라인 도서 클럽</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto" id="navbarNavUl">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main project.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list2 project.html">도서 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookclub4.html">북클럽</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review9.html">리뷰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map5.html">지도</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join6.html">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login7.html">로그인</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container admin-section">
+            <h1 class="text-center">관리자 페이지</h1>
+            <p class="text-center">관리자로 로그인하여 도서 및 북클럽의 추가, 수정, 삭제 기능을 이용할 수 있습니다.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>연락처: chae_y@sookmyung.ac.kr</p>
+            <p>숙명여자대학교 웹시스템설계</p>
+            <p>저작권 정보 &copy; 2024 온라인 도서 클럽</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // 페이지 로드 시 로그인 상태 확인
+        window.onload = function() {
+            checkLoginStatus();
+            checkAdminLoginStatus();
+        };
+
+        // 쿠키 값을 가져오는 함수
+        function getCookie(name) {
+            let cookieArr = document.cookie.split(";");
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookiePair = cookieArr[i].split("=");
+                if (name == cookiePair[0].trim()) {
+                    return decodeURIComponent(cookiePair[1]);
+                }
+            }
+            return null;
+        }
+
+        // 로그인 상태 확인 함수
+        function checkLoginStatus() {
+            const username = getCookie('username');
+            const navbarNavUl = document.getElementById('navbarNavUl');
+            if (username) {
+                const logoutItem = document.createElement('li');
+                logoutItem.className = 'nav-item';
+                logoutItem.innerHTML = `<a class="nav-link" href="#" id="logoutBtn">${username}님 안녕하세요! (로그아웃)</a>`;
+                navbarNavUl.appendChild(logoutItem);
+                
+                document.getElementById('logoutBtn').addEventListener('click', function() {
+                    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    window.location.href = 'main project.html';
+                });
+            }
+        }
+
+        // 관리자 로그인 상태 확인 함수
+        function checkAdminLoginStatus() {
+            const isAdmin = getCookie('isAdmin');
+            if (isAdmin !== 'true') {
+                alert('관리자 로그인이 필요합니다.');
+                window.location.href = 'login7.html';
+            }
+        }
+    </script>
+</body>
+</html>

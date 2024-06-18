@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MONEY BOOK - 온라인 도서 클럽</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styleproject.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">온라인 도서 클럽</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="main project.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list2 project.html">도서 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookclub4.html">북클럽</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review9.html">리뷰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map5.html">지도</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join6.html">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login7.html">로그인</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <img src="bookpage1.jpg" class="img-fluid" alt="THE MONEY BOOK">
+            </div>
+            <div class="col-md-8">
+                <h1>THE MONEY BOOK</h1>
+                <p><strong>출판사:</strong> 비바리퍼블리카</p>
+                <p><strong>출판일:</strong> 2024.05.27</p>
+                <p><strong>저자:</strong> 토스</p>
+                <p>금융 플랫폼 토스에서 사용자가 꼽은 '금융이 궁금한 순간' 100가지를 선별, 저축과 소비부터 보험, 연금에 이르기까지 생애 전반에 활용될 금융 상식을 담았다.</p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12 text-center">
+                <a href="list2 project.html" class="btn btn-secondary">도서 리스트로 돌아가기</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>연락처: chae_y@sookmyung.ac.kr</p>
+            <p>숙명여자대학교 웹시스템설계</p>
+            <p>저작권 정보 &copy; 2024 온라인 도서 클럽</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for handling recent books and setting cookies -->
+    <script>
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        function saveRecentBook(book) {
+            var recentBooks = getCookie('recentBooks');
+            recentBooks = recentBooks ? JSON.parse(recentBooks) : [];
+            if (!recentBooks.includes(book)) {
+                recentBooks.push(book);
+                if (recentBooks.length > 5) {
+                    recentBooks.shift(); // Keep only the latest 5 books
+                }
+                setCookie('recentBooks', JSON.stringify(recentBooks), 7);
+            }
+        }
+
+        window.onload = function() {
+            saveRecentBook('THE MONEY BOOK');
+        }
+    </script>
+</body>
+</html>

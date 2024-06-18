@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>온라인 도서 클럽</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styleproject.css" rel="stylesheet">
+    <link href="dark-mode.css" rel="stylesheet"> <!-- dark-mode.css 추가 -->
+    <style>
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1525609002-92ebd55c14f1'); /* 변경된 배경 이미지 */
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 글자 그림자 추가 */
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .recent-activities {
+            padding: 50px 0;
+        }
+
+        .recent-activities h2 {
+            margin-bottom: 30px;
+        }
+
+        .recent-activities .card {
+            margin-bottom: 20px;
+        }
+
+        .card-deck .card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-deck .card-body {
+            flex: 1;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+
+        /* 왼쪽 aside 스타일 */
+        .aside-container {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-right: 1px solid #e9ecef;
+            z-index: 1000;
+        }
+
+        .aside-container a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #212529;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .aside-container a:hover {
+            background-color: rgba(255, 0, 220, 0.2); /* 핑크 테마 */
+            color: #6f42c1; /* 보라 테마 */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 왼쪽 aside -->
+    <aside class="aside-container">
+        <h5>테마 선택</h5>
+        <button id="light-mode-button" class="btn btn-light btn-block">기본</button>
+        <button id="dark-mode-button" class="btn btn-purple btn-block">커스텀</button>
+    </aside>
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="customThemeModal" tabindex="-1" role="dialog" aria-labelledby="customThemeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customThemeModalLabel">커스텀 테마 설정</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>배경색을 입력하세요:</p>
+                    <input type="text" class="form-control" id="customBgColor" placeholder="예: #ffc0cb 또는 핑크">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary" id="applyCustomTheme">적용</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS 및 jQuery CDN 추가 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">온라인 도서 클럽</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="list2 project.html">도서 리스트</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bookclub4.html">북클럽</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review9.html">리뷰</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="map5.html">지도</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="join6.html">회원가입</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login7.html">로그인</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="hero-section text-center">
+            <div class="container">
+                <h1>온라인 도서 클럽에 오신 것을 환영합니다</h1>
+                <p>좋은 책을 추천하고, 다양한 독서 활동을 함께 나누세요.</p>
+            </div>
+        </div>
+
+        <div class="recent-activities">
+            <div class="container">
+                <h2 class="text-center">추천 도서</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="littleprince.jpeg" class="card-img-top" alt="어린 왕자">
+                            <div class="card-body">
+                                <h5 class="card-title">어린 왕자</h5>
+                                <p class="card-text">앙투안 드 생텍쥐페리의 명작, 삶의 진리를 담은 아름다운 이야기...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="thecatcherinttherye.jpeg" class="card-img-top" alt="호밀밭의 파수꾼">
+                            <div class="card-body">
+                                <h5 class="card-title">호밀밭의 파수꾼</h5>
+                                <p class="card-text">J.D. 샐린저의 걸작, 청소년기의 혼란과 성장의 이야기를 담은 소설...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="harrypotter.jpg" class="card-img-top" alt="해리 포터와 마법사의 돌">
+                            <div class="card-body">
+                                <h5 class="card-title">해리 포터와 마법사의 돌</h5>
+                                <p class="card-text">J.K. 롤링의 판타지 소설 시리즈의 첫 번째 책, 해리 포터의 모험...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-activities">
+            <div class="container">
+                <h2 class="text-center">최근 활동</h2>
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765" class="card-img-top" alt="북클럽 모임">
+                        <div class="card-body">
+                            <h5 class="card-title">북클럽 모임</h5>
+                            <p class="card-text">최근 북클럽 모임에서는 다양한 장르의 책을 토론했습니다...</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" class="card-img-top" alt="저자와의 만남">
+                        <div class="card-body">
+                            <h5 class="card-title">저자와의 만남</h5>
+                            <p class="card-text">저자와의 만남을 통해 책에 대한 깊이 있는 이야기를 나눴습니다...</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="reading.jpeg" class="card-img-top" alt="독서 챌린지">
+                        <div class="card-body">
+                            <h5 class="card-title">독서 챌린지</h5>
+                            <p class="card-text">올해의 독서 챌린지에 많은 회원들이 참여했습니다...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>연락처: chae_y@sookmyung.ac.kr</p>
+            <p>숙명여자대학교 웹시스템설계</p>
+            <p>저작권 정보 &copy; 2024 온라인 도서 클럽</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 기본 테마 버튼 클릭 시 이벤트 처리
+        $('#light-mode-button').click(function () {
+            $('body').removeClass('custom-theme');
+            $('body').css('background-color', '#f8f9fa'); // 기본 배경색 설정
+        });
+
+        // 커스텀 테마 버튼 클릭 시 모달 띄우기
+        $('#dark-mode-button').click(function () {
+            $('#customThemeModal').modal('show');
+        });
+
+        // 모달에서 적용 버튼 클릭 시 이벤트 처리
+        $('#applyCustomTheme').click(function () {
+            var bgColor = $('#customBgColor').val();
+            if (bgColor.trim() !== "") {
+                $('body').addClass('custom-theme');
+                $('body').css('background-color', bgColor);
+                $('#customThemeModal').modal('hide'); // 모달 닫기
+            }
+        });
+    </script>
+
+</body>
+</html>
